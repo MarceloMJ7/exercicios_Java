@@ -1,0 +1,32 @@
+package desafio_1;
+
+import javax.swing.JOptionPane;
+
+/*
+ Criar um programa que solicita ao usuário dois números e, em seguida, pergunta qual
+é o resultado da multiplicação desses dois números. Enquanto o usuário não acertar
+a resposta, o programa deve informar que ele está errado e pedir para tentar
+novamente. Quando o usuário acertar, o programa deve informar que o número está
+correto e mostrar quantas vezes o usuário tentou até acertar.
+ */
+
+public class Desafio_1 {
+
+	public static void main(String[] args) {
+
+	}
+
+	public static int userNumeros() {
+		String num;
+		int numInteiro;
+		int [] numerosUser = new int[2];
+		
+		for(int pergunta = 0; pergunta < 2; pergunta++) {
+			num = JOptionPane.showInputDialog(null, "Digite o número " + (pergunta + 1) + "º");
+			numInteiro = Integer.parseInt(num);
+			numerosUser = numInteiro;
+			
+			System.out.println(numerosUser);
+		}
+	}
+}

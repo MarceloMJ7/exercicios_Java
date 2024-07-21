@@ -1,0 +1,52 @@
+package desafio_2;
+
+import javax.swing.JOptionPane;
+
+/*
+ Um professor deseja ter uma aplicação que calcule a média ponderada de seus
+cinco alunos durante o bimestre. O bimestre é composto por três notas com os
+seguintes pesos: Nota 1 (peso 20%), Nota 2 (peso 30%) e Nota 3 (peso 50%).
+Faça um programa que leia as notas de cada aluno e calcule a média ponderada
+delas. Depois, imprima na tela as notas de cada aluno e a média calculada.
+Exemplo de saída
+Aluno 1: 6.0, 7.0, 8.0 | Média 7.3
+Aluno 2: 9.0, 8.0, 7.0 | Média 7.7
+Aluno 3: 5.0, 6.0, 7.0 | Média 6.5
+Aluno 4: 8.0, 9.0, 10.0 | Média 9.2
+Aluno 5: 7.0, 5.0, 6.0 | Média 5.9
+ */
+
+public class Desafio_2 {
+
+	public static void main(String[] args) {
+		double[][] notaAlunos = solicitaNotaAlunos();
+
+	}
+
+	public static double[][] solicitaNotaAlunos() {
+	    String cNotaAlunos;
+	    double dnotaAlunos;
+	    double[][] notasAlunos = new double[5][3];
+
+	    for (int alunos = 0; alunos < 5; alunos++) {
+	        for (int seqNota = 0; seqNota < 3; seqNota++) {
+	            boolean verifica = false; // redefinindo 'verifica' no início de cada iteração do loop while
+
+	            while (!verifica) {
+	                cNotaAlunos = JOptionPane.showInputDialog("Informe a " + (seqNota + 1) + "ª nota do aluno nº" + (alunos + 1) + "\n");
+	                dnotaAlunos = Double.parseDouble(cNotaAlunos);
+	                if (dnotaAlunos <= 10 && dnotaAlunos >= 0) {
+	                    notasAlunos[alunos][seqNota] = dnotaAlunos;
+	                    verifica = true; // atualização de 'verifica' para sair do loop
+	                } else {
+	                    JOptionPane.showMessageDialog(null, "Informe as notas de 0 a 10");
+	                }
+	            }
+	        }
+	    }
+
+	    return notasAlunos;
+	}
+
+
+}

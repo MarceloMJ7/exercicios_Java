@@ -1,0 +1,25 @@
+
+package curso_programacao;
+import javax.swing.JOptionPane;
+public class Main {
+
+	public static void main(String[] args) {
+		
+		String produto1 = "Computer";
+		String produto2 = "Deesk";
+		int age = 30;
+		int code = 5290;
+		char genero = 'F';
+		
+		double price1 = 2100.35010;
+		double price2 = 200.0;
+		double price3 = 210.0;
+		
+		System.out.println("Produtos:");
+		System.out.printf("%s está no preço atual de R$ %.2f reais\n", produto1, price1);
+		
+		
+
+	}
+
+}

@@ -1,0 +1,52 @@
+package desafio_1;
+
+import javax.swing.JOptionPane;
+
+import java.util.Arrays;
+import java.util.Random;
+
+/*
+ Faça um programa que leia 10 números inteiros digitados pelo usuário e armazeneos em um vetor. Em seguida, calcule e imprima a média desses números e informe o
+2º maior e o 3º menor número.
+
+ */
+
+public class Desafio_1 {
+
+	public static void main(String[] args) {
+		Random random = new Random();
+		int[] numeros = new int[10];
+		double somaNumeros = 0, mediaNumeros = 0;
+
+		for (int i = 0; i < 10; i++) {
+			int randomInt = random.nextInt(11);
+			numeros[i] = randomInt;
+			somaNumeros = somaNumeros + numeros[i];
+
+		}
+		
+		Arrays.sort(numeros);
+		mediaNumeros = somaNumeros / 10;
+		int segundoMaior = numeros[2];
+		int terceiroMenor = numeros[8];
+		 // Converte o array em uma string personalizada
+        String numerosFormatados = formatArray(numeros);
+		JOptionPane.showMessageDialog(null, "Números gerados: " + Arrays.toString(numerosFormatados) + " \n" +
+				"O resultado da média do vetor: " + mediaNumeros + "\n"
+				+ "O segundo maior número: " + segundoMaior + "\n" + "O  terceiro menor número: " + terceiroMenor);
+
+	}
+	
+	 // Método para formatar o array como uma string sem chaves e vírgulas
+    public static String formatArray(int[] array) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < array.length; i++) {
+            sb.append(array[i]);
+            if (i < array.length - 1) {
+                sb.append(" "); // Adiciona um espaço entre os números
+            }
+        }
+        return sb.toString();
+    }
+
+}

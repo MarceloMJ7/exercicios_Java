@@ -1,0 +1,205 @@
+package desafio_2;
+
+import javax.swing.JOptionPane;
+
+/*
+ Você deverá desenvolver um algoritmo que solicite a idade, o gênero e o salário de 
+um grupo de pessoas. Para encerrar o programa, o usuário deve digitar "Finalizar". 
+Certifique-se de validar para que o usuário digite exatamente "Finalizar". Ao término 
+da execução do programa, será apresentado ao usuário as seguintes informações:
+● A média de idade geral;
+● A média de idade de pessoas do gênero feminino;
+● A média de idade de pessoas do gênero masculino;
+● A média salarial geral;
+● A média salarial do gênero feminino;
+● A média salarial do gênero masculino.
+● O maior salário;
+● O menor salário.
+ */
+
+public class Desafio_2 {
+
+	public static void main(String[] args) {
+		String continuar;
+		int totalHomens = 0, totalMulheres = 0, totalPessoas = 0, totalPessoasSalario = 0, totalSalarioFeminino = 0, totalSalarioMasculino = 0, totalIdadeGeral = 0, totalIdadeFem = 0, totalIdadeMasc = 0;
+		double somaSalarioGeral = 0, somaSalarioFeminino = 0, somaSalarioMasculino = 0;
+		int mediaIdadeGeral = mediaIdade(totalPessoas,totalIdadeGeral);
+		int mediaIdadeFem = mediaIdadeFeminina(totalIdadeFem, totalMulheres);
+		int mediaIdadeMasc = mediaIdadeMasculina(totalIdadeMasc, totalHomens);
+		double mediaSalarioGeral = mediaSalarioGeral(totalPessoas, somaSalarioGeral);
+		double mediaSalarioFem = mediaSalarioFeminino(totalMulheres, somaSalarioFeminino);
+		double mediaSalarioMasc = mediaSalarioMasculino(totalHomens, somaSalarioMasculino);
+		
+		
+		do {
+			
+			int idade = solicitaIdade();
+			totalPessoas = totalPessoas + 1;
+			totalIdadeGeral = totalIdadeGeral + idade;
+			
+			char genero = solicitaGenero();
+			
+			if(genero == 'f') {
+				totalMulheres = totalMulheres +1;
+				totalIdadeFem = totalIdadeFem + idade;
+			}else {
+				totalHomens = totalHomens +1;
+				totalIdadeMasc = totalIdadeMasc + idade;
+			}
+			
+			if (idade >= 18) {
+				double salario = solicitaSalario();
+				totalPessoasSalario = totalPessoasSalario +1;
+				somaSalarioGeral = somaSalarioGeral + salario;
+				
+				if(genero == 'f') {
+					totalSalarioFeminino = totalSalarioFeminino +1;
+					somaSalarioFeminino = somaSalarioFeminino + salario;
+				}else {
+					totalSalarioMasculino = totalSalarioMasculino +1;
+					somaSalarioMasculino = somaSalarioMasculino + salario;
+				}
+			}
+
+			
+
+			continuar = JOptionPane.showInputDialog("Digite (Finalizar) para parar de responder!");
+
+		} while (!continuar.equals("Finalizar"));
+		
+		System.out.println("Salario Geral " + somaSalarioGeral);
+		System.out.println("Salario somaSalarioFeminino " + somaSalarioFeminino);
+		System.out.println("Salario somaSalarioMasculino " + somaSalarioMasculino);
+		System.out.println("Total Homens " + totalHomens);
+		System.out.println("Total Mulheres " + totalMulheres);
+		System.out.println("Total PEssoas " + totalPessoas);
+		System.out.println("Total PEssoas salario  " + totalPessoasSalario);
+		System.out.println("Total PEssoas salario fem " + totalSalarioFeminino);
+		System.out.println("Total PEssoas salario masc " + totalSalarioMasculino);
+		System.out.println("Media Geral da idade: " + mediaIdadeGeral);
+		
+		
+
+	}
+
+	public static double mediaSalarioMasculino(int totalHomens, double somaSalarioMasculino) {
+		double mediaSalarioMasculino;
+		mediaSalarioMasculino = somaSalarioMasculino / totalHomens;
+
+		return mediaSalarioMasculino;
+
+	}
+
+	public static double mediaSalarioFeminino(int totalMulheres, double somaSalarioFeminino) {
+		double mediaSalarioFeminino;
+		mediaSalarioFeminino = somaSalarioFeminino / totalMulheres;
+
+		return mediaSalarioFeminino;
+
+	}
+
+	public static double mediaSalarioGeral(int numeroPessoas, double somaSalario) {
+		double mediaSalario;
+		mediaSalario = somaSalario / numeroPessoas;
+
+		return mediaSalario;
+
+	}
+
+	public static int mediaIdadeMasculina(int totalIdadeMasculina, int totalHomens) {
+		int mediaMasculina;
+
+		mediaMasculina = totalIdadeMasculina / totalHomens;
+
+		return mediaMasculina;
+	}
+
+	public static int mediaIdadeFeminina(int totalIdadeFeminina, int totalMulheres) {
+		int mediaFeminina;
+
+		mediaFeminina = totalIdadeFeminina / totalMulheres;
+
+		return mediaFeminina;
+	}
+
+	public static int mediaIdade(int numeroPessoas, int somaIdade) {
+		int mediaIdadeGeral;
+
+		mediaIdadeGeral = somaIdade / numeroPessoas;
+
+		return mediaIdadeGeral;
+
+	}
+
+	public static int solicitaIdade() {
+		String lidade;
+		int idade = 0;
+		boolean verifica = false;
+
+		while (!verifica) {
+			lidade = JOptionPane.showInputDialog("Informe sua idade:");
+			if (isNumeric(lidade)) {
+				idade = Integer.parseInt(lidade);
+				verifica = true;
+			} else {
+				JOptionPane.showMessageDialog(null, "Informe sua idade corretamente!");
+			}
+		}
+
+		return idade;
+	}
+
+	public static boolean isNumeric(String str) {
+
+		if (str == null || str.isEmpty()) {
+			return false;
+		}
+		for (char c : str.toCharArray()) {
+			if (!Character.isDigit(c)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public static char solicitaGenero() {
+		String cGenero;
+		char genero = 0;
+		boolean verifica = false;
+
+		while (!verifica) {
+			cGenero = JOptionPane.showInputDialog("Informe seu Gênero: (F / M)");
+			cGenero = cGenero.toLowerCase();
+
+			if (cGenero.equals("f") || cGenero.equals("m")) {
+				genero = cGenero.charAt(0);
+				verifica = true;
+			} else {
+				JOptionPane.showMessageDialog(null, "Informe os dados corretamente!");
+			}
+
+		}
+
+		return genero;
+
+	}
+
+	public static double solicitaSalario() {
+		String cSalario;
+		double salario = 0;
+		boolean verifica = false;
+
+		while (!verifica) {
+			cSalario = JOptionPane.showInputDialog("Informe seu sálario:");
+
+			if (isNumeric(cSalario)) {
+				salario = Double.parseDouble(cSalario);
+				verifica = true;
+			} else {
+				JOptionPane.showMessageDialog(null, "Informe o sálario corretamente!");
+			}
+		}
+
+		return salario;
+	}
+}

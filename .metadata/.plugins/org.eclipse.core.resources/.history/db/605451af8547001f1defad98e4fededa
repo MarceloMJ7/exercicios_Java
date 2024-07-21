@@ -1,0 +1,77 @@
+package desafio_2;
+
+import javax.swing.JOptionPane;
+
+/*
+ Um professor deseja ter uma aplicação que calcule a média ponderada de seus
+cinco alunos durante o bimestre. O bimestre é composto por três notas com os
+seguintes pesos: Nota 1 (peso 20%), Nota 2 (peso 30%) e Nota 3 (peso 50%).
+Faça um programa que leia as notas de cada aluno e calcule a média ponderada
+delas. Depois, imprima na tela as notas de cada aluno e a média calculada.
+Exemplo de saída
+Aluno 1: 6.0, 7.0, 8.0 | Média 7.3
+Aluno 2: 9.0, 8.0, 7.0 | Média 7.7
+Aluno 3: 5.0, 6.0, 7.0 | Média 6.5
+Aluno 4: 8.0, 9.0, 10.0 | Média 9.2
+Aluno 5: 7.0, 5.0, 6.0 | Média 5.9
+ */
+
+public class Desafio_2 {
+
+	public static void main(String[] args) {
+		double[][] notaAlunos = solicitaNotaAlunos();
+
+	}
+	
+	public static double[][] solicitaNotaAlunos() {
+
+		String cNotaAlunos; // Criei uma String para receber o valor da nota
+		double dnotaAlunos = 0; // variável convertida para double
+		double[][] notasAlunos = new double[5][3]; //Matriz que vai receber as 3 notas de 5 alunos
+
+		for (int alunos = 0; alunos < 5; alunos++) { // Loop para os alunos
+			for (int seqNota = 0; seqNota < 3; seqNota++) { // loop para as notas
+				boolean verifica = false; //variável lógica para verificar se o usuário digitou letras ou números com valores maiores que 10 ou menores que 0
+				while (!verifica) { // loop que vai verificar informações digitadas pelo user
+					cNotaAlunos = JOptionPane
+							.showInputDialog("Informe a " + (seqNota + 1) + "ª nota do aluno nº" + (alunos + 1) + "\n");
+
+					if (isNumeric(cNotaAlunos)) { // cNotaAlunos é uma variável que recebe o valor em String, mas se a função verificar que foi digitado um número ela vai ser convertida em double
+						dnotaAlunos = Double.parseDouble(cNotaAlunos); // converteu para double
+						if (dnotaAlunos <= 10 && dnotaAlunos >= 0) { // Se nota digitada pelo user for menor ou igual a 10 e nota >=0 a matriz vai receber os valores
+							notasAlunos[alunos][seqNota] = dnotaAlunos;
+							verifica = true; // vai sair do loop
+						} else {
+							JOptionPane.showMessageDialog(null, "Informe uma nota de 0 a 10");// user digitou um número incorreto
+						}
+					} else {
+						JOptionPane.showMessageDialog(null, "Digite um número e não uma letra"); // Se o user digitou uma letra vai aparecer essa mensagem
+					}
+				}
+
+			}
+		}
+
+		return notasAlunos;
+	}
+	
+	public static double mediaNotas(double [][] notas) {
+		double mediaNotas;
+		
+		
+	}
+
+	public static boolean isNumeric(String str) {
+
+		if (str == null || str.isEmpty()) {
+			return false;
+		}
+		for (char c : str.toCharArray()) {
+			if (!Character.isDigit(c)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+}

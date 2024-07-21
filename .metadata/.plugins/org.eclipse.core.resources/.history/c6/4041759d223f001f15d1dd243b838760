@@ -1,0 +1,36 @@
+package desafio_1;
+
+import javax.swing.JOptionPane;
+
+public class Desafio_1 {
+
+    public static void main(String[] args) {
+        int[] numeros = solicitarNumeros();
+        int resultadoEsperado = numeros[0] * numeros[1];
+        int tentativas = 0;
+        
+        while (true) {
+            int respostaUsuario = obterRespostaUsuario(numeros);
+            if (respostaUsuario == resultadoEsperado) {
+                JOptionPane.showMessageDialog(null, "Resposta correta! Você precisou de " + tentativas + " tentativas.");
+                break;
+            } else {
+                JOptionPane.showMessageDialog(null, "Resposta incorreta. Tente novamente.");
+                tentativas++;
+            }
+        }
+    }
+
+    public static int[] solicitarNumeros() {
+        int[] numeros = new int[2];
+        for (int i = 0; i < 2; i++) {
+            numeros[i] = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o número " + (i + 1) + ":"));
+        }
+        return numeros;
+    }
+
+    public static int obterRespostaUsuario(int[] numeros) {
+        int multiplicacao = numeros[0] * numeros[1];
+        return Integer.parseInt(JOptionPane.showInputDialog("Qual é o resultado da multiplicação entre os números " + numeros[0] + " * " + numeros[1] + "?"));
+    }
+}

@@ -1,0 +1,30 @@
+package desafio_4;
+
+import javax.swing.JOptionPane;
+
+/*
+ Foi conduzida uma pesquisa com "N" indivíduos sobre suas opiniões em relação à
+pré-estreia de um filme. Os dados coletados incluíram sexo, idade e uma nota de 0 a
+10 referente à opinião sobre o filme. As perguntas foram feitas repetidamente até que
+todas as pessoas disponíveis tivessem respondido.
+Com base nos resultados da pesquisa, podemos calcular e apresentar as seguintes
+informações:
+● A média de idade das pessoas que responderam ao questionário;
+● Lista de pessoas que deram nota igual a 10;
+● A quantidade de homens cujas opiniões sobre o filme foram inferiores a 5;
+● A quantidade de mulheres cujas opiniões sobre o filme foram inferiores a 5;
+● A quantidade de homens cujas opiniões sobre o filme foram superiores a 7;
+● A quantidade de mulheres cujas opiniões sobre o filme foram superiores a 7;
+● Média das notas informadas.
+Essas informações podem ajudar a compreender melhor a recepção do público em
+relação ao filme e a orientar decisões futuras da equipe responsável pela sua
+promoção.
+Obs.: não esqueça de validar se a nota está entre 0 e 10.
+ */
+public class Desafio_4 {
+
+	public static void main(String[] args) {
+
+	}
+
+}

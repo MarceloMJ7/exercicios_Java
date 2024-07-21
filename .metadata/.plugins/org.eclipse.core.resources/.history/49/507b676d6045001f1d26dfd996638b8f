@@ -1,0 +1,23 @@
+package desafio_1;
+import javax.swing.JOptionPane;
+import java.util.Random;
+
+/*
+ Faça um programa que leia 10 números inteiros digitados pelo usuário e armazeneos em um vetor. Em seguida, calcule e imprima a média desses números e informe o
+2º maior e o 3º menor número.
+
+ */
+
+public class Desafio_1 {
+
+	public static void main(String[] args) {
+		Random random = new Random();
+		int randomInt = random.nextInt(11);
+		
+		for(int i = 0; i < 10; i++) {
+			System.out.println(randomInt);
+		}
+
+	}
+
+}
