@@ -18,7 +18,6 @@ public class Desafio_4 {
 
 		String numerosOrdenados = formatArray(numeroUser);
 
-		JOptionPane.showMessageDialog(null, "O programa vai mostrar os números em ordem crescente");
 		JOptionPane.showMessageDialog(null, "Números ordenados: " + numerosOrdenados);
 	}
 

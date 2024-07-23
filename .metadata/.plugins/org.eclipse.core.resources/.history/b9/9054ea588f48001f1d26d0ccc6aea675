@@ -1,0 +1,102 @@
+package desafio_5;
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
+
+/*
+ Um professor deseja ter uma aplicação que calcule a média ponderada de seus
+alunos durante o bimestre. O bimestre é composto por várias notas com pesos que
+podem variar.
+Escreva um programa que permita ao usuário calcular a média ponderada de um
+número variável de alunos, com um número variável de avaliações e pesos definidos
+pelo usuário. O programa deve solicitar ao usuário a quantidade de avaliações e os
+pesos correspondentes para cada uma delas. Em seguida, o programa deve solicitar
+as notas de cada avaliação para um aluno. Permita o usuário cadastrar quantos
+alunos forem necessários.
+Após obter esses dados, o programa deve calcular e imprimir a média ponderada de
+cada aluno, informando se o aluno passou ou não, considerando a média 6.0 como
+nota de aprovação. Além disso, o programa deve calcular e imprimir a média da
+turma e a quantidade de alunos que ficaram acima da média. Para cada aluno, o
+programa deve também ordenar as notas em ordem crescente e imprimir as notas
+ordenadas, além de identificar a maior e a menor notas.
+Exemplo de saída
+Quantidade de Avaliações: 3
+Pesos: 2, 3, 5
+--------------------------------------------
+Notas do Aluno 1: 6, 7, 8
+Maior Nota: 8
+Menor Nota: 6
+Média Ponderada Aluno 1: 7.1
+Situação: Passou
+--------------------------------------------
+Notas do Aluno 2: 9, 8, 7
+Notas Ordenadas Aluno 2: 7, 8, 9
+Maior Nota: 9
+Menor Nota: 7
+Média Ponderada Aluno 2: 7.7
+Situação: Passou
+--------------------------------------------
+Média da Turma: 7.4
+Alunos Acima da Média: 2
+ */
+public class Desafio_5 {
+
+	public static void main(String[] args) {
+		
+		int avaliacao = qtdAvaliacoes();
+		ArrayList<Double> peso = pesoAvaliacoes(avaliacao);
+		
+		System.out.println(avaliacao);
+		System.out.println(peso);
+		
+
+	}
+	
+	public static int qtdAvaliacoes() { //Função que pergunta a quantidade de avaliações que serão aplicadas
+		String cQtdAvaliacao;
+		int qtdAvaliacao = 0;
+		boolean verifica = false;
+		
+		
+		while(!verifica) { //Vou usar um loop para verificar se o user está digitando números
+			try { // Try vai tentar converter a String em int
+				cQtdAvaliacao = JOptionPane.showInputDialog("Informe a quantidade de avaliações que serão aplicadas:");
+				qtdAvaliacao = Integer.parseInt(cQtdAvaliacao);
+				verifica = true; // se a pessoa digitar um número a conversão será realizada e assim sairemos do loop
+			}catch(NumberFormatException e) { // Caso o user digite uma letra, vai aparecer uma mensagem de erro
+				JOptionPane.showMessageDialog(null, "Digite um número válido");
+			}
+		}
+		
+		return qtdAvaliacao;
+	}
+	
+	
+	public static ArrayList<Double> pesoAvaliacoes(int avaliacao) { //Como não sei qual vai ser o número de provas que o user vai aplicar, vamos usar um array list
+		String xPeso;
+		double peso;
+	     // Criação de uma lista para armazenar valores double
+        ArrayList<Double> pesosProvas = new ArrayList<>();
+        
+		for(int i = 0; i < avaliacao; i++) {
+			boolean verifica = false;
+			
+			while(!verifica) {
+				try {
+					xPeso = JOptionPane.showInputDialog("Informe o peso da prova " + (i +1));
+					peso = Double.parseDouble(xPeso);
+					pesosProvas.add(peso);
+					verifica = true;
+				}catch(NumberFormatException e) {
+					JOptionPane.showMessageDialog(null, "Digite números válidos");
+				}
+
+			}
+			
+			
+		}
+		return pesosProvas;
+	}
+
+}
