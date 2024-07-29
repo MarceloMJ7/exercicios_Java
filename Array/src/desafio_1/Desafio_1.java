@@ -20,7 +20,7 @@ public class Desafio_1 {
 
 		JOptionPane.showMessageDialog(null, "Programa vai calcular a média de 10 valores e vai informar o 2º maior e o 3º menor número");
 		for (int i = 0; i < 10; i++) {
-			int randomInt = random.nextInt(11);
+			int randomInt = random.nextInt(51);
 			numeros[i] = randomInt;
 			somaNumeros = somaNumeros + numeros[i];
 
@@ -30,7 +30,7 @@ public class Desafio_1 {
 		mediaNumeros = somaNumeros / 10;
 		int segundoMaior = numeros[2];
 		int terceiroMenor = numeros[8];
-		// Converte o array em uma string personalizada
+
 		String numerosFormatados = formatArray(numeros);
 		JOptionPane.showMessageDialog(null,
 				"Números gerados: " + numerosFormatados + " \n" + "O resultado da média do vetor: " + mediaNumeros
